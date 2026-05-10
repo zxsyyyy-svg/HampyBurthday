@@ -86,7 +86,7 @@
                     <div class="polaroid-mini"></div>
                     <div class="polaroid-mini"></div>
                 </div>
-                <div class="card-label">Memories</div>
+                <div class="card-label">Cute Pics</div>
             </div>
             
             <!-- Choice 2: Flower -->
@@ -113,42 +113,60 @@
         </div>
     </div>
 
-    <!-- ==================== STEP 3A: SCATTERED POLAROID GALLERY ==================== -->
+    <!-- ==================== STEP 3A: PHOTO REVEAL GALLERY ==================== -->
     <div id="step3a" class="gallery-section hidden">
-        <div class="polaroid-scatter">
-            <!-- Scattered Polaroids with Photos -->
-            <div class="polaroid polaroid-1" style="--r: -12deg;">
-                <img src="Ali.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #c8e6c9, #a5d6a7)'">
-            </div>
-            <div class="polaroid polaroid-2" style="--r: 8deg;">
-                <img src="boo.png" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #dcedc8, #c8e6c9)'">
-            </div>
-            <div class="polaroid polaroid-3" style="--r: -5deg;">
-                <img src="Char.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #e8f5e9, #dcedc8)'">
-            </div>
-            <div class="polaroid polaroid-4" style="--r: 15deg;">
-                <img src="BWE.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #a5d6a7, #81c784)'">
-            </div>
-            <div class="polaroid polaroid-5" style="--r: 10deg;">
-                <img src="zoo.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #c8e6c9, #a5d6a7)'">
-            </div>
-            <div class="polaroid polaroid-6" style="--r: -8deg;">
-                <img src="awss.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #dcedc8, #c8e6c9)'">
-            </div>
-            <div class="polaroid polaroid-7" style="--r: 5deg;">
-                <img src="alih.png" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #e8f5e9, #dcedc8)'">
-            </div>
-            <div class="polaroid polaroid-8" style="--r: -15deg;">
-                <img src="brax.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #a5d6a7, #81c784)'">
+        <div class="gallery-aesthetic-bg">
+            <div class="gallery-orb go-1"></div>
+            <div class="gallery-orb go-2"></div>
+            <div class="gallery-orb go-3"></div>
+        </div>
+        
+        <div class="photo-reveal-container">
+            <div class="reveal-stage">
+                <!-- Main photo display area -->
+                <div class="main-photo-frame" id="mainPhotoFrame">
+                    <div class="frame-inner">
+                        <img id="mainPhoto" src="" alt="Adilayda" onerror="this.style.background='linear-gradient(135deg, #c8e6c9, #a5d6a7)'">
+                        <div class="photo-caption" id="photoCaption">Memory #1</div>
+                    </div>
+                    <div class="frame-decoration fd-1">✨</div>
+                    <div class="frame-decoration fd-2">💚</div>
+                    <div class="frame-decoration fd-3">🌸</div>
+                </div>
+                
+                <!-- Progress dots -->
+                <div class="photo-progress" id="photoProgress">
+                    <div class="progress-dot active" data-index="0"></div>
+                    <div class="progress-dot" data-index="1"></div>
+                    <div class="progress-dot" data-index="2"></div>
+                    <div class="progress-dot" data-index="3"></div>
+                    <div class="progress-dot" data-index="4"></div>
+                    <div class="progress-dot" data-index="5"></div>
+                    <div class="progress-dot" data-index="6"></div>
+                    <div class="progress-dot" data-index="7"></div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="photo-nav">
+                    <button class="nav-btn prev-btn" onclick="prevPhoto()">←</button>
+                    <button class="nav-btn auto-btn" id="autoBtn" onclick="toggleAutoPlay()">▶ Auto Play</button>
+                    <button class="nav-btn next-btn" onclick="nextPhoto()">→</button>
+                </div>
+                
+                <!-- Thumbnail strip -->
+                <div class="thumbnail-strip" id="thumbnailStrip">
+                    <div class="thumb" data-index="0" onclick="goToPhoto(0)"><img src="Ali.jpg" alt=""></div>
+                    <div class="thumb" data-index="1" onclick="goToPhoto(1)"><img src="boo.png" alt=""></div>
+                    <div class="thumb" data-index="2" onclick="goToPhoto(2)"><img src="Char.jpg" alt=""></div>
+                    <div class="thumb" data-index="3" onclick="goToPhoto(3)"><img src="BWE.jpg" alt=""></div>
+                    <div class="thumb" data-index="4" onclick="goToPhoto(4)"><img src="zoo.jpg" alt=""></div>
+                    <div class="thumb" data-index="5" onclick="goToPhoto(5)"><img src="awss.jpg" alt=""></div>
+                    <div class="thumb" data-index="6" onclick="goToPhoto(6)"><img src="alih.png" alt=""></div>
+                    <div class="thumb" data-index="7" onclick="goToPhoto(7)"><img src="brax.jpg" alt=""></div>
+                </div>
             </div>
             
-            <!-- Decorations -->
-            <div class="stamp-deco stamp-1">📷</div>
-            <div class="stamp-deco stamp-2">✨</div>
-            <div class="heart-deco heart-d-1">💚</div>
-            <div class="heart-deco heart-d-2">💖</div>
-            
-            <div class="gallery-title">Hampy Hampy Burthdei </div>
+            <div class="gallery-title-aesthetic">Hampy Hampy Burthdei</div>
         </div>
         
         <button class="back-btn glow-btn" onclick="goBackToChoices()">back</button>
@@ -303,6 +321,7 @@
             pageTransition(() => {
                 document.getElementById('step2').classList.add('hidden');
                 document.getElementById('step3a').classList.remove('hidden');
+                initPhotoGallery();
             });
         }
 
@@ -325,6 +344,7 @@
 
         // Back to choices
         function goBackToChoices() {
+            stopAutoPlay();
             pageTransition(() => {
                 document.getElementById('step3a').classList.add('hidden');
                 document.getElementById('step3b').classList.add('hidden');
@@ -332,6 +352,125 @@
                 document.getElementById('step2').classList.remove('hidden');
             });
         }
+
+        // ==================== PHOTO GALLERY SYSTEM ====================
+        const photos = [
+            { src: 'Ali.jpg', caption: 'A Beautiful Moment ✨' },
+            { src: 'boo.png', caption: 'Simply Adorable 🌸' },
+            { src: 'Char.jpg', caption: 'Radiant Smile 💚' },
+            { src: 'BWE.jpg', caption: 'Lovely Memories 🌷' },
+            { src: 'zoo.jpg', caption: 'Pure Joy ✨' },
+            { src: 'awss.jpg', caption: 'Amazing You 💫' },
+            { src: 'alih.png', caption: 'Sweet Times 🌸' },
+            { src: 'brax.jpg', caption: 'Forever Beautiful 💚' }
+        ];
+
+        let currentPhotoIndex = 0;
+        let autoPlayInterval = null;
+        let isAutoPlaying = false;
+
+        function initPhotoGallery() {
+            currentPhotoIndex = 0;
+            showPhoto(0);
+        }
+
+        function showPhoto(index) {
+            const mainPhoto = document.getElementById('mainPhoto');
+            const caption = document.getElementById('photoCaption');
+            const frame = document.getElementById('mainPhotoFrame');
+            
+            // Animate out
+            frame.classList.add('photo-exit');
+            
+            setTimeout(() => {
+                currentPhotoIndex = index;
+                mainPhoto.src = photos[index].src;
+                caption.textContent = photos[index].caption;
+                
+                // Update progress dots
+                document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                // Update thumbnails
+                document.querySelectorAll('.thumb').forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+                
+                // Animate in with different effects based on index
+                frame.classList.remove('photo-exit');
+                frame.classList.add('photo-enter');
+                
+                const effects = ['photo-flip', 'photo-slide-up', 'photo-zoom', 'photo-rotate', 'photo-fade', 'photo-bounce', 'photo-slide-left', 'photo-scale'];
+                frame.style.animation = 'none';
+                frame.offsetHeight; // trigger reflow
+                frame.style.animation = `${effects[index % effects.length]} 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+                
+                setTimeout(() => {
+                    frame.classList.remove('photo-enter');
+                }, 800);
+            }, 300);
+        }
+
+        function nextPhoto() {
+            const next = (currentPhotoIndex + 1) % photos.length;
+            showPhoto(next);
+        }
+
+        function prevPhoto() {
+            const prev = (currentPhotoIndex - 1 + photos.length) % photos.length;
+            showPhoto(prev);
+        }
+
+        function goToPhoto(index) {
+            stopAutoPlay();
+            showPhoto(index);
+        }
+
+        function toggleAutoPlay() {
+            const btn = document.getElementById('autoBtn');
+            if (isAutoPlaying) {
+                stopAutoPlay();
+                btn.textContent = '▶ Auto Play';
+                btn.classList.remove('playing');
+            } else {
+                startAutoPlay();
+                btn.textContent = '⏸ Pause';
+                btn.classList.add('playing');
+            }
+        }
+
+        function startAutoPlay() {
+            isAutoPlaying = true;
+            autoPlayInterval = setInterval(() => {
+                nextPhoto();
+            }, 2500);
+        }
+
+        function stopAutoPlay() {
+            isAutoPlaying = false;
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+            const btn = document.getElementById('autoBtn');
+            if (btn) {
+                btn.textContent = '▶ Auto Play';
+                btn.classList.remove('playing');
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('step3a').classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') nextPhoto();
+                if (e.key === 'ArrowLeft') prevPhoto();
+                if (e.key === ' ') {
+                    e.preventDefault();
+                    toggleAutoPlay();
+                }
+            }
+        });
 
         // ==================== TYPEWRITER EFFECT ====================
         const fullMessage = `On your special day, I just want to say you bring so much happiness to the people around you. Your kindness and warm heart mean a lot more than you probably realize.
