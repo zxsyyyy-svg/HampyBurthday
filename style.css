@@ -819,7 +819,7 @@ body {
 }
 
 .flower-center-photo::after {
-    content: '✨ you ✨';
+    content: 'about you';
     position: absolute;
     bottom: 15px;
     left: 50%;
