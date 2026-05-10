@@ -456,7 +456,6 @@ body {
     pointer-events: none;
 }
 
-/* Hand-drawn cake illustration */
 .cake-drawing {
     width: 200px;
     height: 180px;
@@ -531,7 +530,6 @@ body {
 .candle-3 { bottom: 160px; left: 55%; }
 .candle-4 { bottom: 160px; left: 65%; height: 28px; }
 
-/* Drip decorations */
 .drip {
     width: 8px;
     height: 15px;
@@ -567,7 +565,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Button Styles */
 .btn-container {
     display: flex;
     gap: 20px;
@@ -611,7 +608,6 @@ body {
     box-shadow: 0 15px 30px rgba(239, 154, 154, 0.5);
 }
 
-/* Growing Yes Button Effect */
 .btn-yes.growing {
     animation: growBig 0.5s forwards;
 }
@@ -625,7 +621,7 @@ body {
 }
 
 /* ============================================
-   STEP 2: CHOICES SCREEN (3 CARDS)
+   STEP 2: CHOICES SCREEN
    ============================================ */
 .step-2-container {
     display: flex;
@@ -657,7 +653,6 @@ body {
     color: #558b2f;
 }
 
-/* 3 Choice Cards in a Row */
 .choices-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -720,7 +715,6 @@ body {
     transform: translateY(0);
 }
 
-/* Card symbols */
 .symbol-photos {
     width: 80px;
     height: 70px;
@@ -852,7 +846,7 @@ body {
 }
 
 /* ============================================
-   STEP 3A: SCATTERED POLAROID GALLERY
+   STEP 3A: POP-UP PHOTO GALLERY
    ============================================ */
 .gallery-section {
     display: flex;
@@ -863,17 +857,63 @@ body {
     z-index: 1;
     position: relative;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #4a1c1c 0%, #6d2c2c 50%, #4a1c1c 100%);
+    background: linear-gradient(135deg, #2d1b1b 0%, #4a2c2c 50%, #2d1b1b 100%);
+    overflow: hidden;
 }
 
-.gallery-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+/* Gallery Background Orbs */
+.gallery-aesthetic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     pointer-events: none;
+    overflow: hidden;
 }
 
+.gallery-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.3;
+    animation: galleryOrbFloat 15s ease-in-out infinite;
+}
+
+.go-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(200, 230, 201, 0.4) 0%, transparent 70%);
+    top: -20%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.go-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(248, 187, 208, 0.3) 0%, transparent 70%);
+    bottom: -10%;
+    right: -5%;
+    animation-delay: -7s;
+}
+
+.go-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 249, 196, 0.25) 0%, transparent 70%);
+    top: 40%;
+    left: 50%;
+    animation-delay: -12s;
+}
+
+@keyframes galleryOrbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    50% { transform: translate(30px, -20px) scale(1.1); opacity: 0.5; }
+}
+
+/* Polaroid Scatter Layout */
 .polaroid-scatter {
     position: relative;
     width: 100%;
@@ -882,39 +922,39 @@ body {
     margin: 0 auto;
 }
 
+/* Individual Polaroid */
 .polaroid {
     position: absolute;
     background: white;
-    padding: 12px 12px 35px 12px;
+    padding: 12px 12px 40px 12px;
     box-shadow: 
         0 8px 25px rgba(0,0,0,0.3),
         0 0 0 1px rgba(0,0,0,0.05);
     cursor: pointer;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 3px;
+    opacity: 0;
+    transform: scale(0) rotate(var(--r, 0deg));
 }
 
-.polaroid::before {
-    content: '';
+/* Tape effect */
+.polaroid-tape {
     position: absolute;
     top: -15px;
     left: 50%;
-    transform: translateX(-50%) rotate(-5deg);
-    width: 60px;
-    height: 20px;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 70px;
+    height: 22px;
     background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
     z-index: 10;
+    border-radius: 2px;
 }
 
-.polaroid::after {
+.polaroid-tape::after {
     content: '';
     position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 20px;
+    inset: 0;
     background: repeating-linear-gradient(
         90deg,
         transparent,
@@ -922,13 +962,38 @@ body {
         rgba(0,0,0,0.05) 3px,
         rgba(0,0,0,0.05) 6px
     );
-    z-index: 11;
+    border-radius: 2px;
 }
 
-.polaroid:hover {
+/* Popped state - when photo appears */
+.polaroid.popped {
+    animation: photoPopUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes photoPopUp {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(calc(var(--r, 0deg) - 20deg)) translateY(100px);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.1) rotate(calc(var(--r, 0deg) + 5deg)) translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(var(--r, 0deg)) translateY(0);
+    }
+}
+
+/* Hover effect after popped */
+.polaroid.popped:hover {
     transform: scale(1.15) rotate(0deg) !important;
     z-index: 100 !important;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(255,255,255,0.2);
+    box-shadow: 
+        0 25px 60px rgba(0,0,0,0.4),
+        0 0 40px rgba(255,255,255,0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .polaroid-img {
@@ -937,68 +1002,94 @@ body {
     object-fit: cover;
     display: block;
     background: #f5f5f5;
+    border-radius: 2px;
+}
+
+.polaroid-caption {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: #5d4037;
+    white-space: nowrap;
+    opacity: 0.8;
 }
 
 /* Scattered positions */
 .polaroid-1 {
     top: 20px;
     left: 5%;
-    transform: rotate(-12deg);
-    animation: floatPolaroid 6s ease-in-out infinite;
+    --r: -12deg;
+    --delay: 0s;
 }
 
 .polaroid-2 {
     top: 50px;
     left: 28%;
-    transform: rotate(8deg);
-    animation: floatPolaroid 7s ease-in-out infinite 0.5s;
+    --r: 8deg;
+    --delay: 0.6s;
 }
 
 .polaroid-3 {
     top: 10px;
     left: 52%;
-    transform: rotate(-5deg);
-    animation: floatPolaroid 5s ease-in-out infinite 1s;
+    --r: -5deg;
+    --delay: 1.2s;
 }
 
 .polaroid-4 {
     top: 60px;
     right: 5%;
-    transform: rotate(15deg);
-    animation: floatPolaroid 6.5s ease-in-out infinite 1.5s;
+    --r: 15deg;
+    --delay: 1.8s;
 }
 
 .polaroid-5 {
     bottom: 80px;
     left: 8%;
-    transform: rotate(10deg);
-    animation: floatPolaroid 7.5s ease-in-out infinite 0.3s;
+    --r: 10deg;
+    --delay: 2.4s;
 }
 
 .polaroid-6 {
     bottom: 100px;
     left: 35%;
-    transform: rotate(-8deg);
-    animation: floatPolaroid 5.5s ease-in-out infinite 0.8s;
+    --r: -8deg;
+    --delay: 3.0s;
 }
 
 .polaroid-7 {
     bottom: 60px;
     right: 15%;
-    transform: rotate(5deg);
-    animation: floatPolaroid 6s ease-in-out infinite 1.2s;
+    --r: 5deg;
+    --delay: 3.6s;
 }
 
 .polaroid-8 {
     bottom: 120px;
     right: 5%;
-    transform: rotate(-15deg);
-    animation: floatPolaroid 7s ease-in-out infinite 0.6s;
+    --r: -15deg;
+    --delay: 4.2s;
 }
 
-@keyframes floatPolaroid {
-    0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
-    50% { transform: translateY(-15px) rotate(var(--r, 0deg)); }
+/* Floating animation after pop-up */
+.polaroid.popped {
+    animation: photoPopUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+               floatAfterPop 4s ease-in-out infinite;
+    animation-delay: var(--delay, 0s), calc(var(--delay, 0s) + 0.8s);
+}
+
+@keyframes floatAfterPop {
+    0%, 100% { transform: scale(1) rotate(var(--r, 0deg)) translateY(0); }
+    50% { transform: scale(1) rotate(var(--r, 0deg)) translateY(-10px); }
+}
+
+/* Override for hover to stop floating */
+.polaroid.popped:hover {
+    animation: none;
+    transform: scale(1.15) rotate(0deg) !important;
 }
 
 /* Stamp decorations */
@@ -1030,6 +1121,7 @@ body {
 .heart-d-1 { top: 150px; right: 10%; }
 .heart-d-2 { bottom: 180px; left: 15%; animation-delay: 0.5s; }
 
+/* Gallery Title */
 .gallery-title {
     position: absolute;
     bottom: 20px;
@@ -1039,6 +1131,12 @@ body {
     font-size: 2.5rem;
     color: rgba(255,255,255,0.9);
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: titleFloat 3s ease-in-out infinite;
+}
+
+@keyframes titleFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
 }
 
 /* ============================================
@@ -1063,7 +1161,6 @@ body {
     height: 600px;
 }
 
-/* Center flower photo */
 .flower-center-photo {
     position: absolute;
     top: 50%;
@@ -1104,7 +1201,6 @@ body {
     color: #5d4037;
 }
 
-/* Floating trait bubbles */
 .trait-bubble {
     position: absolute;
     background: linear-gradient(135deg, rgba(232, 245, 233, 0.9), rgba(200, 230, 201, 0.9));
@@ -1135,7 +1231,6 @@ body {
     50% { transform: translateY(-8px); }
 }
 
-/* Position trait bubbles around the flower */
 .trait-1 { top: 10%; left: 5%; animation-delay: 0s; }
 .trait-2 { top: 5%; right: 10%; animation-delay: 0.5s; }
 .trait-3 { top: 30%; left: 0%; animation-delay: 1s; }
@@ -1147,7 +1242,7 @@ body {
 .trait-9 { top: 45%; left: 2%; animation-delay: 4s; }
 
 /* ============================================
-   STEP 3C: MESSAGE SECTION (WITH EYES & TYPEWRITER)
+   STEP 3C: MESSAGE SECTION
    ============================================ */
 .message-section {
     display: flex;
@@ -1161,7 +1256,6 @@ body {
     background: linear-gradient(135deg, #e8f5e9 0%, #dcedc8 50%, #c8e6c9 100%);
 }
 
-/* ---- CUTE BLINKING EYES ---- */
 .eyes-container {
     display: flex;
     gap: 30px;
@@ -1250,7 +1344,6 @@ body {
     100% { transform: translateY(-100%); }
 }
 
-/* ---- MESSAGE CARD ---- */
 .message-card {
     background: rgba(255, 255, 255, 0.95);
     padding: 50px;
@@ -1295,7 +1388,6 @@ body {
     padding-bottom: 15px;
 }
 
-/* ---- TYPEWRITER TEXT ---- */
 .message-body {
     font-size: 1.15rem;
     color: #33691e;
@@ -1323,7 +1415,6 @@ body {
     50% { opacity: 0; }
 }
 
-/* ---- REVEAL BUTTON ---- */
 .reveal-btn {
     display: inline-block;
     margin-top: 25px;
@@ -1366,6 +1457,13 @@ body {
     color: #e91e63;
     display: inline-block;
     animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
 }
 
 /* ============================================
@@ -1417,39 +1515,53 @@ body {
         gap: 15px;
         max-width: 100%;
     }
+    
     .polaroid-scatter {
         height: 800px;
     }
+    
     .polaroid-img {
         width: 100px;
         height: 130px;
     }
+    
+    .polaroid-caption {
+        font-size: 0.85rem;
+    }
+    
     .trait-bubble {
         font-size: 0.9rem;
         padding: 8px 12px;
         max-width: 150px;
     }
+    
     .flower-center-photo {
         width: 200px;
         height: 260px;
     }
+    
     .birthday-cake-card h1 {
         font-size: 3rem;
     }
+    
     .gallery-title {
         font-size: 1.8rem;
     }
+    
     .eyes-container {
         gap: 20px;
     }
+    
     .eye {
         width: 45px;
         height: 30px;
     }
+    
     .pupil {
         width: 18px;
         height: 18px;
     }
+    
     .gradient-orb {
         filter: blur(40px);
     }
@@ -1460,21 +1572,45 @@ body {
         grid-template-columns: 1fr;
         max-width: 250px;
     }
+    
     .polaroid-scatter {
         height: 900px;
     }
+    
+    .polaroid {
+        padding: 8px 8px 30px 8px;
+    }
+    
+    .polaroid-img {
+        width: 85px;
+        height: 110px;
+    }
+    
+    .polaroid-tape {
+        width: 50px;
+        height: 16px;
+        top: -10px;
+    }
+    
+    .polaroid-caption {
+        font-size: 0.75rem;
+        bottom: 8px;
+    }
+    
     .trait-bubble {
         position: relative;
         margin: 10px auto;
         animation: none;
         max-width: 90%;
     }
+    
     .about-container {
         height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+    
     .flower-center-photo {
         position: relative;
         top: auto;
@@ -1483,14 +1619,25 @@ body {
         margin: 20px auto;
         animation: none;
     }
+    
     .eyes-container {
         gap: 15px;
     }
+    
     .eye {
         width: 40px;
         height: 28px;
     }
+    
     .aesthetic-bg {
+        display: none;
+    }
+    
+    .gallery-title {
+        font-size: 1.5rem;
+    }
+    
+    .stamp-deco {
         display: none;
     }
 }
