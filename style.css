@@ -252,7 +252,7 @@ body {
 }
 
 .candle::after {
-    content: '';
+    content: '✨ you ✨';
     width: 10px;
     height: 14px;
     background: radial-gradient(ellipse at center, #fff9c4 0%, #ffd54f 50%, #ff8f00 100%);
