@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Adilayda! 🎂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Vintage Paper Background -->
+    <div class="vintage-bg"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+    
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- ==================== STEP 1: BIRTHDAY CAKE SCREEN ==================== -->
+    <div id="step1" class="step-1-container fade-in">
+        <div class="birthday-cake-card">
+            <!-- Hand-drawn Cake -->
+            <div class="cake-drawing">
+                <div class="cake-base">
+                    <div class="drip drip-1"></div>
+                    <div class="drip drip-2"></div>
+                    <div class="drip drip-3"></div>
+                </div>
+                <div class="cake-middle"></div>
+                <div class="cake-top"></div>
+                <div class="candle candle-1"></div>
+                <div class="candle candle-2"></div>
+                <div class="candle candle-3"></div>
+                <div class="candle candle-4"></div>
+            </div>
+            
+            <h1>Happy</h1>
+            <div class="sub-title">Birthday</div>
+            <div class="question">do you want to see your gift?</div>
+            
+            <div class="btn-container">
+                <button id="btnYes" class="btn btn-yes" onclick="goToStep2()">Yes!!!</button>
+                <button id="btnNo" class="btn btn-no" onclick="makeYesBigger()">nooo...!!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== STEP 2: 3 CHOICE CARDS ==================== -->
+    <div id="step2" class="step-2-container hidden">
+        <div class="choices-header zoom-in">
+            <h1>Happy Birthday</h1>
+            <div class="sub">Adilayda</div>
+        </div>
+        
+        <div class="choices-row">
+            <!-- Choice 1: Photos -->
+            <div class="choice-card slide-in-left" onclick="showGallery()" style="animation-delay: 0.1s;">
+                <div class="symbol-photos">
+                    <div class="polaroid-mini"></div>
+                    <div class="polaroid-mini"></div>
+                    <div class="polaroid-mini"></div>
+                </div>
+            </div>
+            
+            <!-- Choice 2: Flower -->
+            <div class="choice-card slide-in-left" onclick="showAbout()" style="animation-delay: 0.2s;">
+                <div class="symbol-flower">
+                    <div class="flower-bouquet">
+                        <div class="flower-bouquet-head"></div>
+                        <div class="flower-bouquet-stem"></div>
+                        <div class="flower-bouquet-leaf"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Choice 3: Letter -->
+            <div class="choice-card slide-in-right" onclick="showMessage()" style="animation-delay: 0.3s;">
+                <div class="symbol-letter">
+                    <div class="envelope-mini">
+                        <div class="envelope-heart-mini">💚</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== STEP 3A: SCATTERED POLAROID GALLERY ==================== -->
+    <div id="step3a" class="gallery-section hidden">
+        <div class="polaroid-scatter">
+            <!-- Scattered Polaroids with Photos -->
+            <div class="polaroid polaroid-1" style="--r: -12deg;">
+                <img src="Ali.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #c8e6c9, #a5d6a7)'">
+            </div>
+            <div class="polaroid polaroid-2" style="--r: 8deg;">
+                <img src="boo.png" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #dcedc8, #c8e6c9)'">
+            </div>
+            <div class="polaroid polaroid-3" style="--r: -5deg;">
+                <img src="Char.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #e8f5e9, #dcedc8)'">
+            </div>
+            <div class="polaroid polaroid-4" style="--r: 15deg;">
+                <img src="BWE.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #a5d6a7, #81c784)'">
+            </div>
+            <div class="polaroid polaroid-5" style="--r: 10deg;">
+                <img src="zoo.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #c8e6c9, #a5d6a7)'">
+            </div>
+            <div class="polaroid polaroid-6" style="--r: -8deg;">
+                <img src="awss.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #dcedc8, #c8e6c9)'">
+            </div>
+            <div class="polaroid polaroid-7" style="--r: 5deg;">
+                <img src="alih.png" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #e8f5e9, #dcedc8)'">
+            </div>
+            <div class="polaroid polaroid-8" style="--r: -15deg;">
+                <img src="brax.jpg" alt="Adilayda" class="polaroid-img" onerror="this.style.background='linear-gradient(135deg, #a5d6a7, #81c784)'">
+            </div>
+            
+            <!-- Decorations -->
+            <div class="stamp-deco stamp-1">📷</div>
+            <div class="stamp-deco stamp-2">✨</div>
+            <div class="heart-deco heart-d-1">💚</div>
+            <div class="heart-deco heart-d-2">💖</div>
+            
+            <div class="gallery-title">Hampy Hampy Burthdei </div>
+        </div>
+        
+        <button class="back-btn" onclick="goBackToChoices()">back</button>
+    </div>
+
+    <!-- ==================== STEP 3B: ABOUT YOU FLOWER ==================== -->
+    <div id="step3b" class="about-section hidden">
+        <div class="about-container">
+            <!-- Trait Bubbles -->
+            <div class="trait-bubble trait-1">you're incredibly kind</div>
+            <div class="trait-bubble trait-2">your smile lights up everything</div>
+            <div class="trait-bubble trait-3">you make everyone feel loved</div>
+            <div class="trait-bubble trait-4">your laugh is my favorite sound</div>
+            <div class="trait-bubble trait-5">you're stronger than you know</div>
+            <div class="trait-bubble trait-6">you're beautiful inside & out</div>
+            <div class="trait-bubble trait-7">you make life more colorful</div>
+            <div class="trait-bubble trait-8">you're my favorite person</div>
+            
+            <!-- Center Flower Photo -->
+            <div class="flower-center-photo">
+                <img src="fla.jpeg" alt="Flower for Adilayda" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22300%22%3E%3Crect fill=%22%23c8e6c9%22 width=%22250%22 height=%22300%22/%3E%3Ctext x=%22125%22 y=%22150%22 font-family=%22Dancing Script%22 font-size=%2220%22 fill=%22%232e7d32%22 text-anchor=%22middle%22%3E🌷 Tulip 🌷%3C/text%3E%3C/svg%3E'">
+            </div>
+        </div>
+        
+        <button class="back-btn" onclick="goBackToChoices()">back</button>
+    </div>
+
+    <!-- ==================== STEP 3C: MESSAGE SECTION (WITH TYPEWRITER & EYES) ==================== -->
+    <div id="step3c" class="message-section hidden">
+        
+        <!-- Cute Blinking Eyes -->
+        <div class="eyes-container">
+            <div class="eye">
+                <div class="eye-white">
+                    <div class="pupil"></div>
+                    <div class="eyelid"></div>
+                </div>
+            </div>
+            <div class="eye">
+                <div class="eye-white">
+                    <div class="pupil"></div>
+                    <div class="eyelid"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-card fade-in">
+            <div class="message-header">My Dearest Adilayda</div>
+            
+            <div class="message-body" id="messageBody">
+                <p id="typewriter-text"></p>
+                <span id="cursor" class="cursor">|</span>
+            </div>
+            
+            <div class="message-signature" id="signature" style="opacity: 0;">
+                With love,<br>
+                Your Special Someone
+            </div>
+            
+            <!-- Reveal Button -->
+            <button id="revealBtn" class="reveal-btn" onclick="startTypewriter()">💌 Open the Letter</button>
+            
+            <button class="back-btn" onclick="goBackToChoices()" style="margin-top: 20px;">← Back</button>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 15) + 's';
+                particle.style.width = (4 + Math.random() * 8) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Page transition effect
+        function pageTransition(callback) {
+            const overlay = document.getElementById('pageTransition');
+            overlay.classList.add('active');
+            setTimeout(() => {
+                callback();
+                setTimeout(() => {
+                    overlay.classList.remove('active');
+                }, 300);
+            }, 500);
+        }
+
+        // Step 1: Make Yes button bigger when No is clicked
+        let noClickCount = 0;
+        function makeYesBigger() {
+            const btnYes = document.getElementById('btnYes');
+            const btnNo = document.getElementById('btnNo');
+            noClickCount++;
+            
+            btnYes.classList.add('growing');
+            btnNo.style.transform = 'scale(0.8)';
+            btnNo.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                btnYes.style.padding = (20 + noClickCount * 10) + 'px ' + (50 + noClickCount * 15) + 'px';
+                btnYes.style.fontSize = (1.3 + noClickCount * 0.2) + 'rem';
+                
+                if (noClickCount >= 3) {
+                    btnNo.style.display = 'none';
+                    btnYes.innerHTML = 'Yes! Please! 💚✨';
+                    btnYes.style.animation = 'pulse 1s infinite';
+                }
+            }, 500);
+        }
+
+        // Step 2: Go to choices screen
+        function goToStep2() {
+            pageTransition(() => {
+                document.getElementById('step1').classList.add('hidden');
+                document.getElementById('step2').classList.remove('hidden');
+                startConfetti();
+            });
+        }
+
+        // Show Gallery
+        function showGallery() {
+            pageTransition(() => {
+                document.getElementById('step2').classList.add('hidden');
+                document.getElementById('step3a').classList.remove('hidden');
+            });
+        }
+
+        // Show About You
+        function showAbout() {
+            pageTransition(() => {
+                document.getElementById('step2').classList.add('hidden');
+                document.getElementById('step3b').classList.remove('hidden');
+            });
+        }
+
+        // Show Message
+        function showMessage() {
+            pageTransition(() => {
+                document.getElementById('step2').classList.add('hidden');
+                document.getElementById('step3c').classList.remove('hidden');
+                resetTypewriter();
+            });
+        }
+
+        // Back to choices
+        function goBackToChoices() {
+            pageTransition(() => {
+                document.getElementById('step3a').classList.add('hidden');
+                document.getElementById('step3b').classList.add('hidden');
+                document.getElementById('step3c').classList.add('hidden');
+                document.getElementById('step2').classList.remove('hidden');
+            });
+        }
+
+        // ==================== TYPEWRITER EFFECT ====================
+        const fullMessage = `On this special day, I want you to know how incredibly amazing you are. Your smile lights up every room, and your kindness touches every heart around you.
+
+May this birthday bring you endless joy, beautiful memories, and all the dreams your heart desires. You deserve nothing but the best — today and always.
+
+Thank you for being the wonderful person that you are. I'm so grateful to celebrate another year of your beautiful life.
+
+Happy Birthday, Adilayda! 💖`;
+
+        let typewriterIndex = 0;
+        let typewriterInterval;
+        let isTyping = false;
+
+        function resetTypewriter() {
+            clearInterval(typewriterInterval);
+            typewriterIndex = 0;
+            isTyping = false;
+            document.getElementById('typewriter-text').textContent = '';
+            document.getElementById('cursor').style.display = 'inline';
+            document.getElementById('signature').style.opacity = '0';
+            document.getElementById('revealBtn').style.display = 'inline-block';
+            document.getElementById('revealBtn').textContent = '💌 Open the Letter';
+            document.getElementById('revealBtn').disabled = false;
+        }
+
+        function startTypewriter() {
+            if (isTyping) return;
+            isTyping = true;
+            
+            const btn = document.getElementById('revealBtn');
+            btn.textContent = '✨ Reading...';
+            btn.disabled = true;
+            
+            const textElement = document.getElementById('typewriter-text');
+            const cursor = document.getElementById('cursor');
+            
+            typewriterInterval = setInterval(() => {
+                if (typewriterIndex < fullMessage.length) {
+                    textElement.textContent += fullMessage.charAt(typewriterIndex);
+                    typewriterIndex++;
+                    
+                    // Random blink while reading
+                    if (Math.random() > 0.92) {
+                        triggerEyeBlink();
+                    }
+                } else {
+                    clearInterval(typewriterInterval);
+                    cursor.style.display = 'none';
+                    btn.style.display = 'none';
+                    
+                    // Show signature with fade
+                    setTimeout(() => {
+                        document.getElementById('signature').style.transition = 'opacity 2s ease';
+                        document.getElementById('signature').style.opacity = '1';
+                    }, 500);
+                    
+                    // Final happy blink
+                    setTimeout(() => {
+                        triggerHappyBlink();
+                    }, 1000);
+                }
+            }, 45); // Speed of typing
+        }
+
+        // ==================== EYE BLINK EFFECTS ====================
+        function triggerEyeBlink() {
+            const eyelids = document.querySelectorAll('.eyelid');
+            eyelids.forEach(lid => {
+                lid.style.animation = 'none';
+                lid.offsetHeight; // trigger reflow
+                lid.style.animation = 'blink 0.2s ease-in-out';
+            });
+        }
+
+        function triggerHappyBlink() {
+            const eyelids = document.querySelectorAll('.eyelid');
+            eyelids.forEach((lid, i) => {
+                setTimeout(() => {
+                    lid.style.animation = 'none';
+                    lid.offsetHeight;
+                    lid.style.animation = 'happyBlink 0.3s ease-in-out 2';
+                }, i * 100);
+            });
+        }
+
+        // Confetti Effect
+        function startConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const colors = ['#81c784', '#a5d6a7', '#c8e6c9', '#f8bbd0', '#f48fb1', '#fff9c4', '#ffe082', '#e8f5e9'];
+            const confetti = [];
+
+            for (let i = 0; i < 200; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    w: Math.random() * 12 + 4,
+                    h: Math.random() * 12 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speed: Math.random() * 4 + 1,
+                    angle: Math.random() * 360,
+                    spin: Math.random() * 12 - 6
+                });
+            }
+
+            let animationId;
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                confetti.forEach((c) => {
+                    ctx.save();
+                    ctx.translate(c.x + c.w/2, c.y + c.h/2);
+                    ctx.rotate(c.angle * Math.PI / 180);
+                    ctx.fillStyle = c.color;
+                    ctx.globalAlpha = 0.8;
+                    ctx.fillRect(-c.w/2, -c.h/2, c.w, c.h);
+                    ctx.restore();
+
+                    c.y += c.speed;
+                    c.angle += c.spin;
+
+                    if (c.y > canvas.height) {
+                        c.y = -20;
+                        c.x = Math.random() * canvas.width;
+                    }
+                });
+
+                animationId = requestAnimationFrame(draw);
+            }
+
+            draw();
+
+            setTimeout(() => {
+                cancelAnimationFrame(animationId);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }, 12000);
+        }
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            const canvas = document.getElementById('confetti-canvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
