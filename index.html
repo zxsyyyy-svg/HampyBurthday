@@ -10,6 +10,26 @@
 
 <body>
 
+    <!-- AESTHETIC BACKGROUND LAYERS -->
+    <div class="aesthetic-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-orb orb-4"></div>
+        <div class="gradient-orb orb-5"></div>
+    </div>
+    
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+    </div>
+    
+    <div class="sparkle-field" id="sparkleField"></div>
+    
     <!-- Vintage Paper Background -->
     <div class="vintage-bg"></div>
     
@@ -24,7 +44,7 @@
 
     <!-- ==================== STEP 1: BIRTHDAY CAKE SCREEN ==================== -->
     <div id="step1" class="step-1-container fade-in">
-        <div class="birthday-cake-card">
+        <div class="birthday-cake-card glass-card">
             <!-- Hand-drawn Cake -->
             <div class="cake-drawing">
                 <div class="cake-base">
@@ -45,7 +65,7 @@
             <div class="question">do you want to see your gift?</div>
             
             <div class="btn-container">
-                <button id="btnYes" class="btn btn-yes" onclick="goToStep2()">Yes!!!</button>
+                <button id="btnYes" class="btn btn-yes glow-effect" onclick="goToStep2()">Yes!!!</button>
                 <button id="btnNo" class="btn btn-no" onclick="makeYesBigger()">nooo...!!</button>
             </div>
         </div>
@@ -60,16 +80,17 @@
         
         <div class="choices-row">
             <!-- Choice 1: Photos -->
-            <div class="choice-card slide-in-left" onclick="showGallery()" style="animation-delay: 0.1s;">
+            <div class="choice-card slide-in-left glass-card-hover" onclick="showGallery()" style="animation-delay: 0.1s;">
                 <div class="symbol-photos">
                     <div class="polaroid-mini"></div>
                     <div class="polaroid-mini"></div>
                     <div class="polaroid-mini"></div>
                 </div>
+                <div class="card-label">Memories</div>
             </div>
             
             <!-- Choice 2: Flower -->
-            <div class="choice-card slide-in-left" onclick="showAbout()" style="animation-delay: 0.2s;">
+            <div class="choice-card slide-in-left glass-card-hover" onclick="showAbout()" style="animation-delay: 0.2s;">
                 <div class="symbol-flower">
                     <div class="flower-bouquet">
                         <div class="flower-bouquet-head"></div>
@@ -77,15 +98,17 @@
                         <div class="flower-bouquet-leaf"></div>
                     </div>
                 </div>
+                <div class="card-label">About You</div>
             </div>
             
             <!-- Choice 3: Letter -->
-            <div class="choice-card slide-in-right" onclick="showMessage()" style="animation-delay: 0.3s;">
+            <div class="choice-card slide-in-right glass-card-hover" onclick="showMessage()" style="animation-delay: 0.3s;">
                 <div class="symbol-letter">
                     <div class="envelope-mini">
                         <div class="envelope-heart-mini">💚</div>
                     </div>
                 </div>
+                <div class="card-label">My Letter</div>
             </div>
         </div>
     </div>
@@ -128,7 +151,7 @@
             <div class="gallery-title">Hampy Hampy Burthdei </div>
         </div>
         
-        <button class="back-btn" onclick="goBackToChoices()">back</button>
+        <button class="back-btn glow-btn" onclick="goBackToChoices()">back</button>
     </div>
 
     <!-- ==================== STEP 3B: ABOUT YOU FLOWER ==================== -->
@@ -143,16 +166,16 @@
             <div class="trait-bubble trait-6">you're beautiful inside & out</div>
             <div class="trait-bubble trait-7">You have a warm and comforting presence</div>
             <div class="trait-bubble trait-8">You consistently push yourself and do really well.</div>
-            <div class="trait-bubble trait-9">you dont give up easily</div>g
+            <div class="trait-bubble trait-9">you dont give up easily</div>
             
             
             <!-- Center Flower Photo -->
-            <div class="flower-center-photo">
+            <div class="flower-center-photo glass-card">
                 <img src="fla.jpeg" alt="Flower for Adilayda" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22300%22%3E%3Crect fill=%22%23c8e6c9%22 width=%22250%22 height=%22300%22/%3E%3Ctext x=%22125%22 y=%22150%22 font-family=%22Dancing Script%22 font-size=%2220%22 fill=%22%232e7d32%22 text-anchor=%22middle%22%3E🌷 Tulip 🌷%3C/text%3E%3C/svg%3E'">
             </div>
         </div>
         
-        <button class="back-btn" onclick="goBackToChoices()">back</button>
+        <button class="back-btn glow-btn" onclick="goBackToChoices()">back</button>
     </div>
 
     <!-- ==================== STEP 3C: MESSAGE SECTION (WITH TYPEWRITER & EYES) ==================== -->
@@ -174,7 +197,7 @@
             </div>
         </div>
 
-        <div class="message-card fade-in">
+        <div class="message-card glass-card fade-in">
             <div class="message-header">My Dearest Adilayda</div>
             
             <div class="message-body" id="messageBody">
@@ -184,13 +207,12 @@
             
             <div class="message-signature" id="signature" style="opacity: 0;">
                 From Cute ,<br>
-                UknowNaKinsa
-
+                UknowNaKinsa<br>
                 SiJamesRamos
             </div>
             
             <!-- Reveal Button -->
-            <button id="revealBtn" class="reveal-btn" onclick="startTypewriter()">💌 Open the Letter</button>
+            <button id="revealBtn" class="reveal-btn glow-effect" onclick="startTypewriter()">💌 Open the Letter</button>
             
             <button class="back-btn" onclick="goBackToChoices()" style="margin-top: 20px;">← Back</button>
         </div>
@@ -213,6 +235,24 @@
             }
         }
         createParticles();
+
+        // Create sparkle field
+        function createSparkles() {
+            const container = document.getElementById('sparkleField');
+            const sparkles = ['✨', '⭐', '💫', '•', '◦', '∘'];
+            for (let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 8 + 's';
+                sparkle.style.animationDuration = (4 + Math.random() * 6) + 's';
+                sparkle.style.fontSize = (8 + Math.random() * 16) + 'px';
+                container.appendChild(sparkle);
+            }
+        }
+        createSparkles();
 
         // Page transition effect
         function pageTransition(callback) {
@@ -298,9 +338,9 @@
 
 I hope your birthday is filled with joy, peaceful moments, and memories that make you smile. You really deserve all the good things life can offer, not just today, but always.
 
-Thank you for being such a wonderful person. I’m really lucky to know you and happy to celebrate another year of your life.
+Thank you for being such a wonderful person. I'm really lucky to know you and happy to celebrate another year of your life.
 
-Please keep going and doing your best. Even when life feels heavy or you get tired, don’t stop moving forward. I believe in you, so don’t give up on your dreams. And just as important don’t forget to rest, breathe, and take care of yourself along the way.
+Please keep going and doing your best. Even when life feels heavy or you get tired, don't stop moving forward. I believe in you, so don't give up on your dreams. And just as important don't forget to rest, breathe, and take care of yourself along the way.
 
 Happy Birthday, Adilayda! 💖`;
 
